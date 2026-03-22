@@ -54,6 +54,10 @@ For small changes, use the quick flow: `/bmad-quick-spec` → `/bmad-quick-dev`
 ## Active Technologies
 - TypeScript 5.9+ (strict mode) + React 18, Vite 8, Tailwind CSS 4, shadcn/ui, (001-expense-tracker-mvp)
 - PostgreSQL via Prisma 7 (Docker, localhost:5433) (001-expense-tracker-mvp)
+- TypeScript 5.9+ (strict mode) + React 18, Vite 8, Tailwind CSS 4, shadcn/ui, Zustand 5, React Hook Form + Zod (003-dashboard-add-expense)
+- PostgreSQL via Prisma 7 (no schema changes needed) (003-dashboard-add-expense)
+- TypeScript 5.9+ (strict mode) + React 18, React Router 7, Zustand 5 (004-dashboard-auto-refresh)
+- PostgreSQL via Prisma 7 (no changes needed) (004-dashboard-auto-refresh)
 
 ## Recent Changes
 - 001-expense-tracker-mvp: Added TypeScript 5.9+ (strict mode) + React 18, Vite 8, Tailwind CSS 4, shadcn/ui,
