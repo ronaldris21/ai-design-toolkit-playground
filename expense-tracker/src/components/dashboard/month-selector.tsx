@@ -10,6 +10,9 @@ const MONTH_NAMES = [
 export function MonthSelector() {
   const { selectedMonth, selectedYear, setMonth } = useUiStore()
 
+  const now = new Date()
+  const isCurrentMonth = selectedMonth === now.getMonth() + 1 && selectedYear === now.getFullYear()
+
   const prev = () => {
     if (selectedMonth === 1) setMonth(12, selectedYear - 1)
     else setMonth(selectedMonth - 1, selectedYear)
@@ -29,7 +32,7 @@ export function MonthSelector() {
       <span className="min-w-[160px] text-center font-medium">
         {MONTH_NAMES[selectedMonth - 1]} {selectedYear}
       </span>
-      <Button variant="outline" size="icon" onClick={next}>
+      <Button variant="outline" size="icon" onClick={next} disabled={isCurrentMonth}>
         <ChevronRight className="h-4 w-4" />
         <span className="sr-only">Next month</span>
       </Button>

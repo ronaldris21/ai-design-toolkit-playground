@@ -80,7 +80,7 @@ export function CategoryForm({ open, onOpenChange, category }: CategoryFormProps
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label htmlFor="name" className="text-sm font-medium">
+            <label htmlFor="name" className="text-sm font-medium mb-1 block">
               Name
             </label>
             <Input id="name" {...register('name')} />

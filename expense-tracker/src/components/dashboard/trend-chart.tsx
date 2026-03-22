@@ -49,7 +49,15 @@ export function TrendChart({ data }: TrendChartProps) {
               <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
               <XAxis dataKey="month" className="text-xs" tick={{ fontSize: 12 }} />
               <YAxis tick={{ fontSize: 12 }} tickFormatter={(v: number) => `$${v}`} />
-              <Tooltip formatter={(value: number) => formatCurrency(value)} />
+              <Tooltip
+                formatter={(value: number) => formatCurrency(value)}
+                contentStyle={{
+                  backgroundColor: 'var(--color-popover)',
+                  borderColor: 'var(--color-border)',
+                  borderRadius: 'var(--radius)',
+                  color: 'var(--color-popover-foreground)',
+                }}
+              />
               <Line
                 type="monotone"
                 dataKey="total"

@@ -95,7 +95,7 @@ export function ExpenseForm({ open, onOpenChange, expense }: ExpenseFormProps) {
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label htmlFor="amount" className="text-sm font-medium">
+            <label htmlFor="amount" className="text-sm font-medium mb-1 block">
               Amount ($)
             </label>
             <Input
@@ -112,7 +112,7 @@ export function ExpenseForm({ open, onOpenChange, expense }: ExpenseFormProps) {
           </div>
 
           <div>
-            <label htmlFor="category" className="text-sm font-medium">
+            <label htmlFor="category" className="text-sm font-medium mb-1 block">
               Category
             </label>
             <Select value={categoryId} onValueChange={(v) => setValue('categoryId', v)}>
@@ -139,7 +139,7 @@ export function ExpenseForm({ open, onOpenChange, expense }: ExpenseFormProps) {
           </div>
 
           <div>
-            <label htmlFor="description" className="text-sm font-medium">
+            <label htmlFor="description" className="text-sm font-medium mb-1 block">
               Description
             </label>
             <Input id="description" {...register('description')} />
@@ -149,7 +149,7 @@ export function ExpenseForm({ open, onOpenChange, expense }: ExpenseFormProps) {
           </div>
 
           <div>
-            <label htmlFor="date" className="text-sm font-medium">
+            <label htmlFor="date" className="text-sm font-medium mb-1 block">
               Date
             </label>
             <Input id="date" type="date" {...register('date')} />

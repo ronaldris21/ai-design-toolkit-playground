@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useExpenseStore, type Expense } from '@/stores/expense-store'
 import { ExpenseTable } from '@/components/expenses/expense-table'
 import { ExpenseForm } from '@/components/expenses/expense-form'
@@ -20,7 +20,13 @@ export default function ExpensesPage() {
     setFormOpen(true)
   }
 
+  const wasFormOpen = useRef(false)
+
   const handleOpenChange = (open: boolean) => {
+    if (wasFormOpen.current && !open) {
+      fetchExpenses()
+    }
+    wasFormOpen.current = open
     setFormOpen(open)
     if (!open) setEditing(null)
   }
