@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { api } from '@/lib/api'
 import { useUiStore } from '@/stores/ui-store'
 import { StatCards } from '@/components/dashboard/stat-cards'
 import { MonthSelector } from '@/components/dashboard/month-selector'
 import { CategoryChart } from '@/components/dashboard/category-chart'
 import { TrendChart } from '@/components/dashboard/trend-chart'
+import { ExpenseForm } from '@/components/expenses/expense-form'
 import { Button } from '@/components/ui/button'
-import { RefreshCw } from 'lucide-react'
+import { Plus, RefreshCw } from 'lucide-react'
 
 interface StatsResponse {
   totalSpent: number
@@ -20,6 +21,8 @@ export default function DashboardPage() {
   const [stats, setStats] = useState<StatsResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [formOpen, setFormOpen] = useState(false)
+  const wasFormOpen = useRef(false)
 
   const fetchStats = () => {
     setLoading(true)
@@ -35,6 +38,14 @@ export default function DashboardPage() {
     fetchStats()
   }, [selectedMonth, selectedYear])
 
+  const handleFormOpenChange = (open: boolean) => {
+    if (wasFormOpen.current && !open) {
+      fetchStats()
+    }
+    wasFormOpen.current = open
+    setFormOpen(open)
+  }
+
   const topCategory =
     stats?.byCategory.length
       ? stats.byCategory.reduce((top, c) => (c.total > top.total ? c : top)).name
@@ -47,7 +58,13 @@ export default function DashboardPage() {
           <h2 className="text-2xl font-bold tracking-tight">Dashboard</h2>
           <p className="text-muted-foreground mt-1">Your spending overview</p>
         </div>
-        <MonthSelector />
+        <div className="flex items-center gap-2">
+          <Button onClick={() => handleFormOpenChange(true)}>
+            <Plus className="mr-2 h-4 w-4" />
+            Add Expense
+          </Button>
+          <MonthSelector />
+        </div>
       </div>
 
       <div aria-live="polite" aria-atomic="true">
@@ -75,6 +92,8 @@ export default function DashboardPage() {
           </>
         ) : null}
       </div>
+
+      <ExpenseForm open={formOpen} onOpenChange={handleFormOpenChange} />
     </div>
   )
 }
