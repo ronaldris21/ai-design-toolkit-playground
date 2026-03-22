@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.npm/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code local settings (may contain auth tokens)
+.claude/settings.local.json
+
+# Build output
+dist/
+build/
+.next/
+out/
+
+# BMAD memory (session-specific)
+_bmad/_memory/
+
+# Specify memory (session-specific)
+.specify/memory/
