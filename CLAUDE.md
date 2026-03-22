@@ -50,3 +50,10 @@ The typical workflow for this project follows the BMad Method lifecycle:
 7. **QA** — `/bmad-qa-generate-e2e-tests`
 
 For small changes, use the quick flow: `/bmad-quick-spec` → `/bmad-quick-dev`
+
+## Active Technologies
+- TypeScript 5.9+ (strict mode) + React 18, Vite 8, Tailwind CSS 4, shadcn/ui, (001-expense-tracker-mvp)
+- PostgreSQL via Prisma 7 (Docker, localhost:5433) (001-expense-tracker-mvp)
+
+## Recent Changes
+- 001-expense-tracker-mvp: Added TypeScript 5.9+ (strict mode) + React 18, Vite 8, Tailwind CSS 4, shadcn/ui,

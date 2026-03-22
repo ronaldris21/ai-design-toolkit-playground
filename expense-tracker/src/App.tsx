@@ -1,15 +1,48 @@
-import { Button } from '@/components/ui/button'
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AppLayout } from '@/components/layout/app-layout'
+import { Toaster } from '@/components/ui/sonner'
 
-function App() {
-  return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">Expense Tracker</h1>
-        <p className="text-muted-foreground">Bootstrap complete. Ready for implementation.</p>
-        <Button>Get Started</Button>
-      </div>
-    </div>
-  )
+const DashboardPage = lazy(() => import('@/pages/dashboard'))
+const ExpensesPage = lazy(() => import('@/pages/expenses'))
+const CategoriesPage = lazy(() => import('@/pages/categories'))
+
+function Loading() {
+  return <div className="flex items-center justify-center p-8 text-muted-foreground">Loading...</div>
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route
+            index
+            element={
+              <Suspense fallback={<Loading />}>
+                <DashboardPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="expenses"
+            element={
+              <Suspense fallback={<Loading />}>
+                <ExpensesPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="categories"
+            element={
+              <Suspense fallback={<Loading />}>
+                <CategoriesPage />
+              </Suspense>
+            }
+          />
+        </Route>
+      </Routes>
+      <Toaster />
+    </BrowserRouter>
+  )
+}
