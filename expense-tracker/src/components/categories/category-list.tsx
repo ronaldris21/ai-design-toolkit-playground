@@ -43,12 +43,12 @@ export function CategoryList({ categories, onEdit }: CategoryListProps) {
             key={category.id}
             className="flex items-center justify-between rounded-lg border p-4"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 min-w-0">
               <span
-                className="h-5 w-5 rounded-full border"
+                className="h-5 w-5 shrink-0 rounded-full border"
                 style={{ backgroundColor: category.color }}
               />
-              <span className="font-medium">{category.name}</span>
+              <span className="font-medium truncate">{category.name}</span>
             </div>
             <div className="flex gap-1">
               <Button variant="ghost" size="icon" onClick={() => onEdit(category)}>
@@ -75,7 +75,7 @@ export function CategoryList({ categories, onEdit }: CategoryListProps) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
+            <AlertDialogAction onClick={handleDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">Delete</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

@@ -55,6 +55,12 @@ export function CategoryChart({ data }: CategoryChartProps) {
               </Pie>
               <Tooltip
                 formatter={(value: number) => formatCurrency(value)}
+                contentStyle={{
+                  backgroundColor: 'var(--color-popover)',
+                  borderColor: 'var(--color-border)',
+                  borderRadius: 'var(--radius)',
+                  color: 'var(--color-popover-foreground)',
+                }}
               />
             </PieChart>
           </ResponsiveContainer>

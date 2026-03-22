@@ -64,7 +64,7 @@ export function ExpenseTable({ expenses, onEdit }: ExpenseTableProps) {
                 <TableCell className="whitespace-nowrap">
                   {new Date(expense.date).toLocaleDateString()}
                 </TableCell>
-                <TableCell>{expense.description || '—'}</TableCell>
+                <TableCell className="max-w-[200px] truncate">{expense.description || '—'}</TableCell>
                 <TableCell>
                   <Badge variant="secondary" className="gap-1.5">
                     <span
@@ -112,7 +112,7 @@ export function ExpenseTable({ expenses, onEdit }: ExpenseTableProps) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
+            <AlertDialogAction onClick={handleDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">Delete</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
